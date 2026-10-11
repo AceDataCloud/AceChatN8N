@@ -48,15 +48,23 @@ jobs:
               npm ls --prefix /home/node/.n8n/nodes --depth=0
               export NODE_PATH=/usr/local/lib/node_modules/n8n/node_modules
               export N8N_USER_FOLDER=/home/node
-              n8n import:workflow --input=/package/load-workflow.json >/tmp/import.log 2>&1
+              if ! n8n import:workflow --input=/package/load-workflow.json >/tmp/import.log 2>&1; then
+                tail -n 80 /tmp/import.log >&2
+                exit 1
+              fi
               if n8n execute --id=aceChatModelSmokeTest >/tmp/n8n-load.log 2>&1; then
                 echo "Expected the credential-free workflow to stop before an API request" >&2
+                tail -n 80 /tmp/n8n-load.log >&2
                 exit 1
               fi
               if grep -Eiq "unrecognized node|unknown node|cannot find module|error loading" /tmp/n8n-load.log; then
                 tail -n 40 /tmp/n8n-load.log >&2
                 exit 1
               fi
-              grep -Eiq "credential.*required" /tmp/n8n-load.log
+              if ! grep -Eiq "credential.*required" /tmp/n8n-load.log; then
+                echo "Execution did not stop at the expected credential boundary" >&2
+                tail -n 80 /tmp/n8n-load.log >&2
+                exit 1
+              fi
               echo "PASS: npm package loaded in fresh n8n and stopped before any API call"
             '
