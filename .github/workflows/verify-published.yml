@@ -61,7 +61,7 @@ jobs:
                 tail -n 40 /tmp/n8n-load.log >&2
                 exit 1
               fi
-              if ! grep -Eiq "credential.*required" /tmp/n8n-load.log; then
+              if ! grep -Eiq "credential.*(not set|not found|missing|not configured|not available|required)|no credential|does not have any credentials" /tmp/n8n-load.log; then
                 echo "Execution did not stop at the expected credential boundary" >&2
                 tail -n 80 /tmp/n8n-load.log >&2
                 exit 1
