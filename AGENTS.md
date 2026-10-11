@@ -1,0 +1,3 @@
+# AceChatN8N
+
+This repository contains one n8n community chat-model package for the Ace Data Cloud Chat API. Use Node.js 24 and pnpm 11. Run `pnpm install --frozen-lockfile --ignore-scripts`, `pnpm run build`, `pnpm run lint`, and `pnpm test`. The @n8n/ai-node-sdk is preview; test against the current stable n8n release. Keep strict mode and no bundled runtime dependencies beyond n8n-workflow and the AI SDK peer dependencies. Runtime code must not read local files or environment variables. Only the fixed /v1 chat-completions API is in scope; keep SDK POST retries disabled. Examples and screenshots must contain no credentials. Do not claim n8n verification or Cloud listing before authenticated official readback. Deliver changes through PRs under Ace Data Cloud Dev.

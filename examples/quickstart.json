@@ -1,0 +1,72 @@
+{
+  "name": "Ace Data Cloud Chat Model quickstart",
+  "nodes": [
+    {
+      "id": "start",
+      "name": "Start",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "chain",
+      "name": "Basic LLM Chain",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.9,
+      "position": [
+        260,
+        0
+      ],
+      "parameters": {
+        "promptType": "define",
+        "text": "In one sentence, explain what an API key is."
+      },
+      "retryOnFail": false
+    },
+    {
+      "id": "model",
+      "name": "Ace Data Cloud Chat Model",
+      "type": "@acedatacloud/n8n-nodes-ace-chat-model.lmChatAceDataCloud",
+      "typeVersion": 1,
+      "position": [
+        260,
+        220
+      ],
+      "parameters": {
+        "model": "gpt-4.1-mini"
+      },
+      "retryOnFail": false
+    }
+  ],
+  "connections": {
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ace Data Cloud Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}
