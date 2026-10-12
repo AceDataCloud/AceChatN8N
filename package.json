@@ -1,6 +1,6 @@
 {
   "name": "@acedatacloud/n8n-nodes-ace-chat-model",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Use Ace Data Cloud chat models in n8n AI Agents and chains through one chat API.",
   "license": "MIT",
   "homepage": "https://github.com/AceDataCloud/AceChatN8N",
