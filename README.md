@@ -1,6 +1,6 @@
 # Ace Data Cloud Chat Model for n8n
 
-Connect one Ace Data Cloud chat model to an n8n AI Agent or Basic LLM Chain. This package uses only the Ace Data Cloud chat-completions API. The screenshots show a real self-hosted n8n 2.42.3 editor in English. The n8n AI Node SDK is in preview, and Creator Portal verification is pending.
+Connect one Ace Data Cloud chat model to an n8n AI Agent or Basic LLM Chain. This package uses only the Ace Data Cloud chat-completions API. The existing screenshots show a real self-hosted n8n 2.42.3 editor in English; they predate the new model-list control. CI loads this change in stable n8n 2.43.7. The n8n AI Node SDK is in preview, and Creator Portal verification is pending.
 
 **Package:** `@acedatacloud/n8n-nodes-ace-chat-model` · [Current chat models and pricing](https://platform.acedata.cloud/models?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=acechatn8n_readme_pricing) · [Source](https://github.com/AceDataCloud/AceChatN8N)
 
@@ -20,7 +20,7 @@ New account? Register and sign in first. If the Applications page has no General
 
 1. Sign in at [Ace Data Cloud → Applications](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=acechatn8n_readme_api_key).
 2. Open **General application** and copy its API key, or choose **Manage Keys → Create** for a separate n8n key.
-3. Check AI Chat access, the current `gpt-4.1-mini` price and your balance. If **Allowed APIs** is enabled, include `/v1/chat/completions`. Include the read-only `/v1/models` route if you want n8n's credential test to work.
+3. Check AI Chat access, the current `gpt-4.1-mini` price and your balance. If **Allowed APIs** is enabled, include `/v1/chat/completions`. Include the read-only `/v1/models` route for the credential test and native Model dropdown.
 
 ![Copy a key or open Manage Keys](https://raw.githubusercontent.com/AceDataCloud/KlingDify/d09e7c0201532a012388a277ce3cc42d2e0716c7/_assets/tutorial/get-api-key-en.png)
 
@@ -43,7 +43,7 @@ Open the **Ace Data Cloud Chat Model** node. In **Credential**, choose **Connect
 | Field | First-run value |
 | --- | --- |
 | Basic LLM Chain → Prompt | `In one sentence, explain what an API key is.` |
-| Ace Data Cloud Chat Model → Model | `gpt-4.1-mini` |
+| Ace Data Cloud Chat Model → Model Name or ID | Select an accessible chat model from the list; the existing example keeps `gpt-4.1-mini` |
 | Credential | The AI Chat application key saved above |
 
 The model ID is a chat-completions model ID, not an image or video model. The package fixes the Base URL to `https://api.acedata.cloud/v1`, which sends chat calls to `/v1/chat/completions`. Keep n8n **Retry On Fail** off and select **Execute workflow** once.
@@ -58,7 +58,7 @@ The SDK's automatic POST retry count is fixed at zero. The screenshots show an e
 
 ## Scope and troubleshooting
 
-This package exposes the Ace Data Cloud chat-completions service only. It does not proxy image, video, music, search or unrelated APIs. It does not send calls to the Responses or stateful-conversation APIs and does not substitute one model for another. Model IDs are entered explicitly because availability and pricing change; use a chat-completions model your key can access. Advanced model-specific parameters and tool-calling combinations have not been claimed as live n8n results.
+This package exposes the Ace Data Cloud chat-completions service only. It does not proxy image, video, music, search or unrelated APIs. It does not send calls to the Responses or stateful-conversation APIs and does not substitute one model for another. The **Model Name or ID** dropdown reads the authenticated `/v1/models` catalog without sending a generation request. Non-chat image, embedding, audio and video IDs are excluded. The catalog is metadata, not a guarantee of model entitlement or a current price. If your key cannot read it, use an expression containing the exact chat-completions model ID; a failed list request never switches your selected model. Advanced model-specific parameters and tool-calling combinations have not been claimed as live n8n results.
 
 | What you see | What to check |
 | --- | --- |
