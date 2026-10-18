@@ -69,3 +69,7 @@ This package exposes the Ace Data Cloud chat-completions service only. It does n
 | Chat model does not appear | Confirm the package loaded in this n8n version and connect it to a chain or Agent's Model input. |
 
 The API key stays in n8n credential storage. [Privacy](https://github.com/AceDataCloud/AceChatN8N/blob/main/PRIVACY.md) · [Report an issue](https://github.com/AceDataCloud/AceChatN8N/issues) · dev@acedata.cloud
+
+## Reproduce the package installation check
+
+Run `pnpm run build && bash scripts/smoke-docker.sh` with Docker available. The script creates `npm pack`, installs that exact tarball in isolated n8n 2.43.7, checks bundled native metadata, help links, icons and masked credential fields, imports the credential-free smoke workflow, and confirms execution stops before any API call. The archive manifest and loading log are saved in `artifacts/`. This checks real host package installation/loading and missing-credential behavior; it does not prove ordinary UI search, an authorized service response, a terminal media task, billing or acquisition.
