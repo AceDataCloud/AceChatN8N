@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+- Load chat model choices in the native Model field using authenticated read-only catalog metadata.
+- Keep exact-ID expressions and existing saved model values; never substitute models or retry generation automatically.
+
+
 ## 0.1.1
 
 - Publish the illustrated API key onboarding and tagged setup/documentation links.
