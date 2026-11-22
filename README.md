@@ -2,7 +2,7 @@
 
 Connect one Ace Data Cloud chat model to an n8n AI Agent or Basic LLM Chain. This package uses only the Ace Data Cloud chat-completions API. The existing screenshots show a real self-hosted n8n 2.42.3 editor in English; they predate the new model-list control. CI loads this change in stable n8n 2.43.7. The n8n AI Node SDK is in preview, and Creator Portal verification is pending.
 
-**Package:** `@acedatacloud/n8n-nodes-ace-chat-model` · [Current chat models and pricing](https://platform.acedata.cloud/models?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=acechatn8n_readme_pricing) · [Source](https://github.com/AceDataCloud/AceChatN8N)
+**Package:** `@acedatacloud/n8n-nodes-ace-chat-model` · [Current chat models and pricing](https://platform.acedata.cloud/models?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen) · [Source](https://github.com/AceDataCloud/AceChatN8N)
 
 ## Quick start
 
@@ -18,7 +18,7 @@ Search for **Ace Data Cloud Chat Model** in the node picker after installation. 
 
 New account? Register and sign in first. If the Applications page has no General application yet, choose **Initialize General Application**, then continue with the key steps below.
 
-1. Sign in at [Ace Data Cloud → Applications](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=acechatn8n_readme_api_key).
+1. Sign in at [Ace Data Cloud → Applications](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen).
 2. Open **General application** and copy its API key, or choose **Manage Keys → Create** for a separate n8n key.
 3. Check AI Chat access, the current `gpt-4.1-mini` price and your balance. If **Allowed APIs** is enabled, include `/v1/chat/completions`. Include the read-only `/v1/models` route for the credential test and native Model dropdown.
 
@@ -52,7 +52,7 @@ The model ID is a chat-completions model ID, not an image or video model. The pa
 
 ### 5. Read the answer and usage
 
-Open **Basic LLM Chain** output after the run and read its answer. If the run fails or times out, check the original n8n execution and [Ace Data Cloud usage history](https://platform.acedata.cloud/console?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=acechatn8n_readme_console) before trying again; a request might have reached the service. Compare the key, model and execution time with the usage row. Consumption is in **Credits**, not USD; the current package rate determines its USD equivalent.
+Open **Basic LLM Chain** output after the run and read its answer. If the run fails or times out, check the original n8n execution and [Ace Data Cloud usage history](https://platform.acedata.cloud/console?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen) before trying again; a request might have reached the service. Compare the key, model and execution time with the usage row. Consumption is in **Credits**, not USD; the current package rate determines its USD equivalent.
 
 The SDK's automatic POST retry count is fixed at zero. The screenshots show an empty credential and configuration, not a credentialed model response. A real n8n answer and matching usage row have not yet been verified for this release.
 
