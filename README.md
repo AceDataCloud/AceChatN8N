@@ -16,7 +16,7 @@ Search for **Ace Data Cloud Chat Model** in the node picker after installation. 
 
 ### 2. Get an API key with AI Chat access
 
-New account? Register and sign in first. If the Applications page has no General application yet, choose **Initialize General Application**, then continue with the key steps below.
+Sign in to Applications and copy the API key from the General Application card.
 
 1. Sign in at [Ace Data Cloud → Applications](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen).
 2. Open **General application** and copy its API key, or choose **Manage Keys → Create** for a separate n8n key.
